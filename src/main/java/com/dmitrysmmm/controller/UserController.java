@@ -8,6 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -15,6 +17,17 @@ import java.util.List;
 public class UserController {
 
     private final UserService userService;
+    //для теста
+    List<String> list = new ArrayList<>();
+    {
+        list.add("rfythjfyj");
+        list.add("ue4rujmng");
+        list.add("rfytilk10");
+        list.add("r767534ds");
+        list.add("rf3566tyj");
+        list.add("rfy5y5ryu");
+        list.add("rfythhthj");
+    }
 
     @Autowired
     public UserController(UserService userService) {
