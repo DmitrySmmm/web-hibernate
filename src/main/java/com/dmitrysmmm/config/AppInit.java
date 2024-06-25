@@ -1,10 +1,11 @@
 package com.dmitrysmmm.config;
 
+import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.filter.HiddenHttpMethodFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
+import javax.servlet.*;
+import java.util.EnumSet;
 
 public class AppInit extends AbstractAnnotationConfigDispatcherServletInitializer {
 
@@ -30,4 +31,23 @@ public class AppInit extends AbstractAnnotationConfigDispatcherServletInitialize
         return new String[]{"/"};
     }
 
+    @Override
+    public void onStartup(ServletContext aServletContext) throws ServletException {
+        super.onStartup(aServletContext);
+        registerHiddenFieldFilter(aServletContext);
+        getServletFilters();
+    }
+
+    private void registerHiddenFieldFilter(ServletContext aContext) {
+        aContext.addFilter("hiddenHttpMethodFilter",
+                new HiddenHttpMethodFilter()).addMappingForUrlPatterns(null ,true, "/*");
+    }
+
+    @Override
+    protected Filter[] getServletFilters() {
+        CharacterEncodingFilter filter = new CharacterEncodingFilter();
+        filter.setEncoding("UTF-8");
+        filter.setForceEncoding(true);
+        return new Filter[] { filter };
+    }
 }
