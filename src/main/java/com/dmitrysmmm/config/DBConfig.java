@@ -3,6 +3,7 @@ package com.dmitrysmmm.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
@@ -24,7 +25,7 @@ import java.util.Properties;
 @EnableJpaRepositories
 @PropertySource("classpath:db.properties")
 @EnableTransactionManagement
-
+@ComponentScan(value = "com.dmitrysmmm")
 public class DBConfig {
 
     private final Environment env;

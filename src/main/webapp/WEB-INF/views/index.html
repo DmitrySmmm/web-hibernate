@@ -1,13 +1,22 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Main page</title>
 </head>
 <body>
-<h3 th:text="Hi"></h3>
-<!--<th:block th:each="u:${message}">-->
-<!--    <h1 th:text="${u}"></h1>-->
-<!--</th:block>-->
+<div>
+    <th:block th:each="user : ${users}">
+        <a th:text="${user.getName()}">u</a>
+        <a th:text="${user.getSurname()}">u</a>
+        <a th:text="${user.getPhoneNumber()}">u</a>
+        <a th:href="@{/id/edit(id=${user.getId()})}">Edit User</a>
+        <hr/>
+    </th:block>
+</div>
+<br/>
+<hr/>
+<a href="/newuser">CREATE NEW USER</a>
 </body>
 </html>
