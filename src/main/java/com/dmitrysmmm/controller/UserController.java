@@ -2,7 +2,7 @@ package com.dmitrysmmm.controller;
 
 import com.dmitrysmmm.model.User;
 import com.dmitrysmmm.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
 
     private final UserService userService;
-    @Autowired
+
     public UserController(UserService userService) {
         this.userService = userService;
     }
@@ -49,8 +49,8 @@ public class UserController {
     }
 
     @PutMapping("/id")
-    public String update(@ModelAttribute("user") User user) {
-        userService.updateUser(user);
+    public String update(@ModelAttribute("user") User user, @RequestParam("id") long id) {
+        userService.updateUser(user, id);
         return "redirect:/";
     }
 

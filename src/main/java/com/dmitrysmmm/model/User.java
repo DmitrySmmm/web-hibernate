@@ -1,6 +1,5 @@
 package com.dmitrysmmm.model;
 
-import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 
@@ -21,7 +20,8 @@ public class User {
     @Column
     private long phoneNumber;
 
-    public User(String name, String surname, long phoneNumber) {
+    public User(long id, String name, String surname, long phoneNumber) {
+        this.id = id;
         this.name = name;
         this.surname = surname;
         this.phoneNumber = phoneNumber;
@@ -48,6 +48,10 @@ public class User {
 
     public long getId() {
         return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public long getPhoneNumber() {

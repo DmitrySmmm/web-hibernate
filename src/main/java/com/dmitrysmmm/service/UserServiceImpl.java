@@ -2,7 +2,7 @@ package com.dmitrysmmm.service;
 
 import com.dmitrysmmm.dao.UserDao;
 import com.dmitrysmmm.model.User;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -13,7 +13,6 @@ public class UserServiceImpl implements UserService {
 
     private final UserDao userDao;
 
-    @Autowired
     public UserServiceImpl(UserDao userdao) {
         this.userDao = userdao;
     }
@@ -44,7 +43,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional
-    public void updateUser(User user) {
-        userDao.updateUser(user);
+    public void updateUser(User user, long id) {
+        userDao.updateUser(user, id);
     }
 }
